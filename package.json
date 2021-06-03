@@ -1,23 +1,21 @@
 {
   "private": true,
-  "workspaces": {
-    "packages": [
-      "app1",
-      "app2",
-      "app3"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
+
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean",
-    "update:version": "lerna version --no-push"
+    "start:all": "lerna run --parallel start",
+    "start:app1": "lerna --scope app1 run start --stream",
+    "start:app2": "lerna --scope app2 run start --stream",
+    "start:app3": "lerna --scope app3 run start --stream",
+
+    "test:all": "lerna run --parallel test --stream",
+    "test:app1": "lerna --scope app1 run test --stream",
+    "test:app2": "lerna --scope app2 run test --stream",
+    "test:app3": "lerna --scope app3 run test --stream"
   },
   "devDependencies": {
     "lerna": "3.22.1"
-  },
-  "dependencies": {
-    "react": "^17.0.2"
   }
 }
